@@ -1,0 +1,31 @@
+{
+  "name": "audiophonic",
+  "version": "0.0.1",
+  "description": "Experiments with the Web Audio API",
+  "main": "bundle.js",
+  "scripts": {
+    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "build": "./node_modules/webpack/bin/webpack.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stevekinney/audiophonic.git"
+  },
+  "author": "Steve Kinney",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stevekinney/audiophonic/issues"
+  },
+  "homepage": "https://github.com/stevekinney/audiophonic",
+  "devDependencies": {
+    "babel-core": "^5.1.13",
+    "babel-loader": "^5.0.0",
+    "css-loader": "^0.12.0",
+    "node-sass": "^2.1.1",
+    "sass-loader": "^0.6.0",
+    "style-loader": "^0.12.1",
+    "webpack": "^1.8.11",
+    "webpack-dev-server": "^1.8.2"
+  }
+}
