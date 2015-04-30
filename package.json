@@ -27,5 +27,9 @@
     "style-loader": "^0.12.1",
     "webpack": "^1.8.11",
     "webpack-dev-server": "^1.8.2"
+  },
+  "dependencies": {
+    "headtrackr": "0.0.1",
+    "jquery": "^2.1.4"
   }
 }

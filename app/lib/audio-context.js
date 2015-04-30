@@ -1,3 +1,4 @@
-let context = window.AudioContext || window.webkitAudioContext;
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+const context = new AudioContext();
 
-export default context; 
+export default context;
