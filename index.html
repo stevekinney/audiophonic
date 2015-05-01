@@ -8,10 +8,22 @@
 
 <body>
 
-  <h1>Audiophonic</h1>
+  <div class="container">
 
-  <canvas id="inputCanvas" width="320" height="240" style="display:none"></canvas>
-  <video id="inputVideo" autoplay loop></video>
+    <h1>Audiophonic</h1>
+
+    <div class="adjustment">
+      <h3>Frequency <span class="current-frequency">220</span></h3>
+      <input type="range" class="frequency-slider" min=110 max=880 value=220>
+        <h3>Volume <span class="current-volume">0</span></h3>
+      <input type="range" class="volume-slider" min=0 max=1 step=0.1 value=0>
+    </div>
+
+    <div class="notes">
+
+    </div>
+
+  </div>
 
   <script src="/bundle.js"></script>
 </body>
