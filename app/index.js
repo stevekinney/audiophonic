@@ -25,7 +25,7 @@ const oscillator = (function () {
   const oscillator = context.createOscillator();
   oscillator.connect(gainNode);
   oscillator.frequency.value = frequency;
-  oscillator.start();
+  oscillator.start(0);
   return oscillator;
 }());
 
