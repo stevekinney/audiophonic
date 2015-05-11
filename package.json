@@ -29,7 +29,9 @@
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
+    "babel": "^5.2.6",
     "headtrackr": "0.0.1",
-    "jquery": "^2.1.4"
+    "jquery": "^2.1.4",
+    "octavian": "^2.0.5"
   }
 }
