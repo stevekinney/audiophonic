@@ -3,31 +3,32 @@ import Octavian from 'octavian';
 
 const notes = {};
 
-export default function findOrCreateOscillator(note) {
+export default function (note) {
   const frequency = new Octavian.Note(note).frequency;
-  notes[frequency] = notes[frequency] || new Synthesizer(frequency);
+  if (!notes[frequency]) { notes[frequency] = new Synthesizer(frequency); }
   return notes[frequency];
 }
 
 class Synthesizer {
-  constructor(frequency) {
-    this.oscillator = context.createOscillator();
-    this.gain = context.createGain();
+  constructor(frequency, destination = context.destination) {
+    const oscillator = this.oscillator = context.createOscillator();
+    const gain = context.createGain();
+    const volume = this.volume = gain.gain;
 
-    this.oscillator.frequency.value = frequency;
-    this.gain.gain.value = 0;
+    oscillator.frequency.value = frequency;
+    volume.value = 0;
 
-    this.oscillator.connect(this.gain);
-    this.gain.connect(context.destination);
+    oscillator.connect(gain);
+    gain.connect(destination);
 
-    this.oscillator.start();
+    oscillator.start();
   }
 
   start() {
-    this.gain.gain.value = 1;
+    this.volume.value = 1;
   }
 
   stop() {
-    this.gain.gain.value = 0;
+    this.volume.value = 0;
   }
 }

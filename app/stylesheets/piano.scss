@@ -2,14 +2,14 @@
   &.white-key {
     fill: $pale;
     stroke: darken($pale, 25f);
-    &:hover {
+    &:hover, &.active {
       fill: darken($pale, 5);
     }
   }
   &.black-key {
     fill: $ocean;
     stroke: darken($ocean, 25);
-    &:hover {
+    &:hover, &.active {
       fill: darken($ocean, 5);
     }
   }

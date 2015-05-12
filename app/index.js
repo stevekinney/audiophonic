@@ -2,23 +2,36 @@ require('./stylesheets/main');
 
 import $ from 'jquery';
 import synthesizer from './lib/synthesizer';
+import keys from './lib/note-keys';
 
 $(document).ready(function () {
 
+  const $body = $('body');
   const $pianoKey = $('.piano-key');
 
-  $pianoKey.on('mouseenter', function () {
-    const note = $(this).data('piano-key');
-    const noteSynthesizer = synthesizer(note);
+  $body.on('keydown', respondToKeyPress.bind(null, 'enter'));
+  $body.on('keyup', respondToKeyPress.bind(null, 'leave'));
 
-    noteSynthesizer.start();
-  });
-
-  $pianoKey.on('mouseleave', function () {
-    const note = $(this).data('piano-key');
-    const noteSynthesizer = synthesizer(note);
-
-    noteSynthesizer.stop();
-  });
-
+  $pianoKey.on('mouseenter', startNote);
+  $pianoKey.on('mouseleave', stopNote);
 });
+
+function startNote() {
+  const note = $(this).data('piano-key');
+  const classAttr = $(this).attr('class');
+  $(this).attr('class', `${classAttr} active`);
+  if (note) { synthesizer(note).start(); }
+}
+
+function stopNote() {
+  const note = $(this).data('piano-key');
+  const classAttr = $(this).attr('class');
+  $(this).attr('class', classAttr.slice(0, -7));
+  if (note) { synthesizer(note).stop(); }
+}
+
+function respondToKeyPress(action, event) {
+  const note = keys[event.keyCode];
+  console.log(event.keyCode);
+  $(`#piano-key-${note}`).trigger(`mouse${action}`);
+}
