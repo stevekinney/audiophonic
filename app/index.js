@@ -11,14 +11,14 @@ $(document).ready(function () {
     const note = $(this).data('piano-key');
     const noteSynthesizer = synthesizer(note);
 
-    noteSynthesizer.gain.gain.value = 1;
+    noteSynthesizer.start();
   });
 
   $pianoKey.on('mouseleave', function () {
     const note = $(this).data('piano-key');
     const noteSynthesizer = synthesizer(note);
 
-    noteSynthesizer.gain.gain.value = 0;
+    noteSynthesizer.stop();
   });
 
 });

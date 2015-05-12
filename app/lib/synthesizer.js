@@ -5,21 +5,29 @@ const notes = {};
 
 export default function findOrCreateOscillator(note) {
   const frequency = new Octavian.Note(note).frequency;
-  notes[frequency] = notes[frequency] || createOscillator(frequency);
+  notes[frequency] = notes[frequency] || new Synthesizer(frequency);
   return notes[frequency];
 }
 
-function createOscillator(frequency) {
-  const oscillator = context.createOscillator();
-  const gain = context.createGain();
+class Synthesizer {
+  constructor(frequency) {
+    this.oscillator = context.createOscillator();
+    this.gain = context.createGain();
 
-  oscillator.frequency.value = frequency;
-  gain.gain.value = 0;
+    this.oscillator.frequency.value = frequency;
+    this.gain.gain.value = 0;
 
-  oscillator.connect(gain);
-  gain.connect(context.destination);
+    this.oscillator.connect(this.gain);
+    this.gain.connect(context.destination);
 
-  oscillator.start();
+    this.oscillator.start();
+  }
 
-  return { oscillator: oscillator, gain: gain };
+  start() {
+    this.gain.gain.value = 1;
+  }
+
+  stop() {
+    this.gain.gain.value = 0;
+  }
 }
