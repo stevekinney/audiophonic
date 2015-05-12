@@ -1,0 +1,16 @@
+.piano-key {
+  &.white-key {
+    fill: $pale;
+    stroke: darken($pale, 25f);
+    &:hover {
+      fill: darken($pale, 5);
+    }
+  }
+  &.black-key {
+    fill: $ocean;
+    stroke: darken($ocean, 25);
+    &:hover {
+      fill: darken($ocean, 5);
+    }
+  }
+}

@@ -1,5 +1,6 @@
 @import './colors';
 @import './buttons';
+@import './piano';
 
 * {
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
@@ -13,23 +14,4 @@ h1, h2, h3, h4, h5, h6, strong {
 .container {
   width: 800px;
   margin: auto;
-}
-
-.frequency-slider, .volume-slider {
-  width: 100%;
-}
-
-.notes {
-  margin: 2em 0;
-  padding: 1em;
-  border: 1px solid darken($pale, 20);
-  background-color: $pale;
-  text-align: center;
-  .note {
-    margin: 0.5em;
-    &:nth-child(7n + 1) {
-      content:"\a";
-      white-space: pre;
-    };
-  }
 }

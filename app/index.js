@@ -1,13 +1,24 @@
 require('./stylesheets/main');
 
 import $ from 'jquery';
-import context from './lib/audio-context';
-import Octavian from 'octavian';
+import synthesizer from './lib/synthesizer';
 
-const $currentFrequency = $('.current-frequency');
-const $currentVolume = $('.current-volume');
-const $frequencySlider = $('.frequency-slider');
-const $volumeSlider = $('.volume-slider');
-const $startButton = $('.start');
-const $stopButton = $('.stop');
-const $notes = $('.notes');
+$(document).ready(function () {
+
+  const $pianoKey = $('.piano-key');
+
+  $pianoKey.on('mouseenter', function () {
+    const note = $(this).data('piano-key');
+    const noteSynthesizer = synthesizer(note);
+
+    noteSynthesizer.gain.gain.value = 1;
+  });
+
+  $pianoKey.on('mouseleave', function () {
+    const note = $(this).data('piano-key');
+    const noteSynthesizer = synthesizer(note);
+
+    noteSynthesizer.gain.gain.value = 0;
+  });
+
+});
