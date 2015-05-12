@@ -2,7 +2,7 @@
 <svg width="1120px" height="400px" viewBox="0 0 1120 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Piano Keyboard</title>
   <defs></defs>
-    <g id="Piano-Keyboard">
+    <g id="piano-keyboard">
       <g id="octave-1">
         <rect id="octave-1-B-key" class="piano-key white-key" data-piano-key="B" stroke="#555555" fill="#FFFFF7" x="480" y="0" width="80" height="400"></rect>
         <rect id="octave-1-A-key" class="piano-key white-key" data-piano-key="A" stroke="#555555" fill="#FFFFF7" x="400" y="0" width="80" height="400"></rect>
