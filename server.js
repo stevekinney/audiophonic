@@ -5,6 +5,6 @@ const port = process.env.PORT || 3000;
 
 http.createServer(
   ecstatic({ root: __dirname + '/dist' })
-).listen(3000);
+).listen(port);
 
 console.log('Listening on ' + port + '.');
