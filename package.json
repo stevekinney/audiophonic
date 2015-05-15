@@ -5,7 +5,7 @@
   "main": "bundle.js",
   "scripts": {
     "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "build": "./node_modules/webpack/bin/webpack.js",
+    "build": "cp index.html dist/index.html && ./node_modules/webpack/bin/webpack.js && git commit -am \"Build application\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
