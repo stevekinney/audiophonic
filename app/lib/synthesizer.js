@@ -21,7 +21,7 @@ class Synthesizer {
     oscillator.connect(gain);
     gain.connect(destination);
 
-    oscillator.start();
+    oscillator.start(0);
   }
 
   start() { this.volume.value = 1; }
