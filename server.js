@@ -1,10 +1,11 @@
-const http = require('http');
-const ecstatic = require('ecstatic');
+var path = require('path');
+var express = require('express');
+var app = express();
+
+app.use(express.static(path.join(__dirname, '/dist')));
 
 const port = process.env.PORT || 3000;
 
-http.createServer(
-  ecstatic({ root: __dirname + '/dist' })
-).listen(port);
-
-console.log('Listening on ' + port + '.');
+var server = app.listen(port, function () {
+  console.log('Example app listening on Port %s', port);
+});
