@@ -3,9 +3,9 @@ import Octavian from 'octavian';
 
 const notes = {};
 
-export default function (note) {
+export default function (note, destination = context.destination) {
   const frequency = new Octavian.Note(note).frequency;
-  if (!notes[frequency]) { notes[frequency] = new Synthesizer(frequency); }
+  if (!notes[frequency]) { notes[frequency] = new Synthesizer(frequency, destination); }
   return notes[frequency];
 }
 
