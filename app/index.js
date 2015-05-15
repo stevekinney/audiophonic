@@ -26,7 +26,7 @@ function startNote() {
 function stopNote() {
   const note = $(this).data('piano-key');
   const classAttr = $(this).attr('class');
-  $(this).attr('class', classAttr.slice(0, -7));
+  $(this).attr('class', classAttr.replace(/active/gi, ''));
   if (note) { synthesizer(note).stop(); }
 }
 

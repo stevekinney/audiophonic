@@ -24,11 +24,6 @@ class Synthesizer {
     oscillator.start();
   }
 
-  start() {
-    this.volume.value = 1;
-  }
-
-  stop() {
-    this.volume.value = 0;
-  }
+  start() { this.volume.value = 1; }
+  stop() { this.volume.value = 0; }
 }
