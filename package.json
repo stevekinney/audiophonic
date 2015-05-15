@@ -6,6 +6,7 @@
   "scripts": {
     "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "build": "cp index.html dist/index.html && ./node_modules/webpack/bin/webpack.js && git commit -am \"Build application\"",
+    "deploy": "npm run build && git push heroku master",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
