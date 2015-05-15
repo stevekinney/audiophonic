@@ -1,11 +1,9 @@
 require('./stylesheets/main');
 
 import $ from 'jquery';
-import synthesizer from './lib/synthesizer';
-import keys from './lib/note-keys';
+import { startNote, stopNote, respondToKeyPress } from './lib/key-events';
 
 $(document).ready(function () {
-
   const $body = $('body');
   const $pianoKey = $('.piano-key');
 
@@ -15,23 +13,3 @@ $(document).ready(function () {
   $pianoKey.on('mouseenter', startNote);
   $pianoKey.on('mouseleave', stopNote);
 });
-
-function startNote() {
-  const note = $(this).data('piano-key');
-  const classAttr = $(this).attr('class');
-  $(this).attr('class', `${classAttr} active`);
-  if (note) { synthesizer(note).start(); }
-}
-
-function stopNote() {
-  const note = $(this).data('piano-key');
-  const classAttr = $(this).attr('class');
-  $(this).attr('class', classAttr.replace(/active/gi, ''));
-  if (note) { synthesizer(note).stop(); }
-}
-
-function respondToKeyPress(action, event) {
-  const note = keys[event.keyCode];
-  console.log(event.keyCode);
-  $(`#piano-key-${note}`).trigger(`mouse${action}`);
-}
