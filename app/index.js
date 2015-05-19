@@ -1,15 +1,10 @@
 require('./stylesheets/main');
 
 import $ from 'jquery';
-import { startNote, stopNote, respondToKeyPress } from './lib/key-events';
+import { startNote, stopNote } from './lib/mouse-events';
+import bindComputerKeyboardEvents from './lib/computer-keyboard.js';
 
 $(document).ready(function () {
-  const $body = $('body');
-  const $pianoKey = $('.piano-key');
-
-  $body.on('keydown', respondToKeyPress.bind(null, 'enter'));
-  $body.on('keyup', respondToKeyPress.bind(null, 'leave'));
-
-  $pianoKey.on('mouseenter', startNote);
-  $pianoKey.on('mouseleave', stopNote);
+  $('.piano-key').hover(startNote, stopNote);
+  bindComputerKeyboardEvents('.active-key');
 });
