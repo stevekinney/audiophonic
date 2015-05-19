@@ -1,16 +1,22 @@
-.piano-key {
-  &.white-key {
-    fill: $pale;
-    stroke: darken($pale, 25f);
-    &:hover, &.active {
-      fill: darken($pale, 5);
-    }
+.computer {
+  fill: white;
+}
+
+.computer-key.active {
+  fill: red;
+}
+
+.white-key {
+  fill: $pale;
+  stroke: darken($pale, 25f);
+  &:hover, &.active {
+    fill: darken($pale, 5);
   }
-  &.black-key {
-    fill: $ocean;
-    stroke: darken($ocean, 25);
-    &:hover, &.active {
-      fill: darken($ocean, 5);
-    }
+}
+.black-key {
+  fill: $ocean;
+  stroke: darken($ocean, 25);
+  &:hover, &.active {
+    fill: darken($ocean, 5);
   }
 }

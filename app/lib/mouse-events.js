@@ -15,8 +15,3 @@ export function stopNote() {
   $(this).attr('class', classAttr.replace(/active/gi, ''));
   if (note) { synthesizer(note).stop(); }
 }
-
-export function respondToKeyPress(action, event) {
-  const note = keys[event.keyCode];
-  $(`#piano-key-${note}`).trigger(`mouse${action}`);
-}
