@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import notes from './note-keys';
-import synthesizer from './synthesizer';
+import Synthesizer from './synthesizer';
 
 const computerKeys = {};
 
@@ -16,7 +16,7 @@ export default function (selector) {
     $(computerKeys[event.keyCode]).attr('class', `${classAttr} active`);
 
     const note = notes[event.keyCode];
-    if (note) { synthesizer(note).start(); }
+    if (note) { Synthesizer.oscillator(note).start(); }
   });
 
   $(document).keyup(function (event) {
@@ -24,6 +24,6 @@ export default function (selector) {
     $(computerKeys[event.keyCode]).attr('class', classAttr.replace(/active/gi, ''));
 
     const note = notes[event.keyCode];
-    if (note) { synthesizer(note).stop(); }
+    if (note) { Synthesizer.oscillator(note).stop(); }
   });
 }
