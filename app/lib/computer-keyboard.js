@@ -1,27 +1,23 @@
-import $ from 'jquery';
+import d3 from 'd3';
 import notes from './note-keys';
 import Synthesizer from './synthesizer';
 
-const computerKeys = {};
+const activeKeys = {};
 
 export default function (selector) {
-  $(selector).each(function (index, element) {
-    const keyCode = $(element).data('key-code');
-    if (!computerKeys[keyCode]) { computerKeys[keyCode] = []; }
-    computerKeys[keyCode].push(element);
+  d3.selectAll(selector)[0].forEach(function (element) {
+    activeKeys[element.dataset.keyCode] = element;
   });
 
-  $(document).keydown(function (event) {
-    const classAttr = $(computerKeys[event.keyCode]).attr('class');
-    $(computerKeys[event.keyCode]).attr('class', `${classAttr} active`);
+  document.addEventListener('keydown', function (event) {
+    d3.select(activeKeys[event.keyCode]).classed('active', true);
 
     const note = notes[event.keyCode];
     if (note) { Synthesizer.oscillator(note).start(); }
   });
 
-  $(document).keyup(function (event) {
-    const classAttr = $(computerKeys[event.keyCode]).attr('class');
-    $(computerKeys[event.keyCode]).attr('class', classAttr.replace(/active/gi, ''));
+  document.addEventListener('keyup', function (event) {
+    d3.select(activeKeys[event.keyCode]).classed('active', false);
 
     const note = notes[event.keyCode];
     if (note) { Synthesizer.oscillator(note).stop(); }
