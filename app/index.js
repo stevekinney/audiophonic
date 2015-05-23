@@ -1,10 +1,12 @@
 require('./stylesheets/main');
 
-import $ from 'jquery';
+import d3 from 'd3';
 import { startNote, stopNote } from './lib/mouse-events';
 import bindComputerKeyboardEvents from './lib/computer-keyboard.js';
 
-$(document).ready(function () {
-  $('.piano-key').hover(startNote, stopNote);
-  bindComputerKeyboardEvents('.active-key');
-});
+const pianoKeys = d3.selectAll('.piano-key');
+
+pianoKeys.on('mouseover', startNote);
+pianoKeys.on('mouseout', stopNote);
+
+bindComputerKeyboardEvents('.active-key');
