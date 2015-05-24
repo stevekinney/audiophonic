@@ -199,8 +199,8 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(17)();
-	exports.push([module.id, "@charset \"UTF-8\";\na.button {\n  text-decoration: none; }\n\nbutton {\n  font-family: 'Open Sans'; }\n\nbutton, input[type=\"submit\"], .button {\n  color: white;\n  background-color: #1db2d4;\n  font-size: 0.8rem;\n  font-weight: 300;\n  border: 1px solid #1db2d4;\n  border-radius: 3px;\n  outline: none;\n  padding: 0.8rem 1.4rem;\n  font-weight: 300; }\n  @media screen and (max-width: 480px) {\n    button, input[type=\"submit\"], .button {\n      width: 100%;\n      display: block; } }\n\nbutton:hover, input[type=\"submit\"]:hover, .button:hover {\n  background-color: #24beeb; }\n\nbutton:active, input[type=\"submit\"]:active, .button:active {\n  background-color: #1c97bb; }\n\nbutton.forward:after, input[type=\"submit\"].forward:after, .button.forward:after {\n  content: ' →'; }\n\nbutton.deactivated, input[type=\"submit\"].deactivated, .button.deactivated {\n  background-color: #bde1eb;\n  pointer-events: none; }\n\nbutton.secondary, input[type=\"submit\"].secondary, .button.secondary {\n  background-color: white;\n  box-sizing: border-box;\n  color: #1db2d4; }\n\nbutton.secondary:hover, input[type=\"submit\"].secondary:hover, .button.secondary:hover {\n  background-color: #F9F9F9;\n  color: #24beeb; }\n\nbutton.secondary:active, input[type=\"submit\"].secondary:active, .button.secondary:active {\n  background-color: #EEE; }\n\nbutton.xl, input[type=\"submit\"].xl, .button.xl {\n  font-size: 1.5em; }\n\n.button-bar {\n  border-top: 1px dashed #b6ddd3;\n  padding: 2rem 0;\n  margin-top: 1rem; }\n\n.buttons {\n  margin-top: 2rem; }\n\n.computer {\n  fill: white; }\n\n.computer-key.active {\n  fill: red; }\n\n.white-key {\n  fill: #fff5d5;\n  stroke: #ffd755; }\n  .white-key:hover, .white-key.active {\n    fill: #ffefbc; }\n\n.black-key {\n  fill: #56b9c5;\n  stroke: #286c74; }\n  .black-key:hover, .black-key.active {\n    fill: #43b1be; }\n\n* {\n  font-family: 'Helvetica Neue', Helvetica, sans-serif;\n  font-weight: 300; }\n\nh1, h2, h3, h4, h5, h6, strong {\n  font-weight: 400; }\n\n.container {\n  width: 800px;\n  margin: auto; }\n\nsvg {\n  width: 100%;\n  margin: auto; }\n", ""]);
+	exports = module.exports = __webpack_require__(12)();
+	exports.push([module.id, "@charset \"UTF-8\";\na.button {\n  text-decoration: none; }\n\nbutton {\n  font-family: 'Open Sans'; }\n\nbutton, input[type=\"submit\"], .button {\n  color: white;\n  background-color: #1db2d4;\n  font-size: 0.8rem;\n  font-weight: 300;\n  border: 1px solid #1db2d4;\n  border-radius: 3px;\n  outline: none;\n  padding: 0.8rem 1.4rem;\n  font-weight: 300; }\n  @media screen and (max-width: 480px) {\n    button, input[type=\"submit\"], .button {\n      width: 100%;\n      display: block; } }\n\nbutton:hover, input[type=\"submit\"]:hover, .button:hover {\n  background-color: #24beeb; }\n\nbutton:active, input[type=\"submit\"]:active, .button:active {\n  background-color: #1c97bb; }\n\nbutton.forward:after, input[type=\"submit\"].forward:after, .button.forward:after {\n  content: ' →'; }\n\nbutton.deactivated, input[type=\"submit\"].deactivated, .button.deactivated {\n  background-color: #bde1eb;\n  pointer-events: none; }\n\nbutton.secondary, input[type=\"submit\"].secondary, .button.secondary {\n  background-color: white;\n  box-sizing: border-box;\n  color: #1db2d4; }\n\nbutton.secondary:hover, input[type=\"submit\"].secondary:hover, .button.secondary:hover {\n  background-color: #F9F9F9;\n  color: #24beeb; }\n\nbutton.secondary:active, input[type=\"submit\"].secondary:active, .button.secondary:active {\n  background-color: #EEE; }\n\nbutton.xl, input[type=\"submit\"].xl, .button.xl {\n  font-size: 1.5em; }\n\n.button-bar {\n  border-top: 1px dashed #b6ddd3;\n  padding: 2rem 0;\n  margin-top: 1rem; }\n\n.buttons {\n  margin-top: 2rem; }\n\n.computer {\n  fill: white; }\n\n.computer-key.active {\n  fill: red; }\n\n.white-key {\n  fill: #fff5d5;\n  stroke: #ffd755; }\n  .white-key:hover, .white-key.active {\n    fill: #ffefbc; }\n\n.black-key {\n  fill: #56b9c5;\n  stroke: #286c74; }\n  .black-key:hover, .black-key.active {\n    fill: #43b1be; }\n\n* {\n  font-family: 'Fira Sans', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }\n\np {\n  line-height: 1.4em; }\n\na {\n  color: #56b9c5;\n  text-decoration: none; }\n  a:hover {\n    color: #3ba0ad; }\n\n.container {\n  width: 800px;\n  margin: auto; }\n\nsvg {\n  width: 100%;\n  margin: auto; }\n", ""]);
 
 /***/ },
 /* 6 */
@@ -611,21 +611,21 @@
 	  };
 	})();
 
-	var _parseNote = __webpack_require__(12);
+	var _parseNote = __webpack_require__(13);
 
 	var _parseNote2 = _interopRequireDefault(_parseNote);
 
-	var _getAlternateName = __webpack_require__(13);
+	var _getAlternateName = __webpack_require__(14);
 
 	var _getAlternateName2 = _interopRequireDefault(_getAlternateName);
 
-	var _getNoteFromPianoKey = __webpack_require__(14);
+	var _getNoteFromPianoKey = __webpack_require__(15);
 
 	var _getNoteFromPianoKey2 = _interopRequireDefault(_getNoteFromPianoKey);
 
-	var _pianoKeys$frequencies = __webpack_require__(15);
+	var _pianoKeys$frequencies = __webpack_require__(16);
 
-	var _validateNote = __webpack_require__(16);
+	var _validateNote = __webpack_require__(17);
 
 	var _validateNote2 = _interopRequireDefault(_validateNote);
 
@@ -769,6 +769,61 @@
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	"use strict";
+
+	module.exports = function () {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for (var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if (item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function (modules, mediaQuery) {
+			if (typeof modules === "string") modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for (var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if (typeof id === "number") alreadyImportedModules[id] = true;
+			}
+			for (i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if (typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if (mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if (mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -809,7 +864,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -870,7 +925,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -879,7 +934,7 @@
 	  value: true
 	});
 
-	var _pianoKeys = __webpack_require__(15);
+	var _pianoKeys = __webpack_require__(16);
 
 	var noteIndex = swapKeysAndValues(_pianoKeys.pianoKeys);
 
@@ -897,7 +952,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1127,7 +1182,7 @@
 	exports.frequencies = frequencies;
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1137,7 +1192,7 @@
 	});
 	exports['default'] = validateNote;
 
-	var _pianoKeys = __webpack_require__(15);
+	var _pianoKeys = __webpack_require__(16);
 
 	var validNotes = Object.keys(_pianoKeys.pianoKeys);
 
@@ -1148,61 +1203,6 @@
 	}
 
 	module.exports = exports['default'];
-
-/***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	"use strict";
-
-	module.exports = function () {
-		var list = [];
-
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for (var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if (item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-
-		// import a list of modules into the list
-		list.i = function (modules, mediaQuery) {
-			if (typeof modules === "string") modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for (var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if (typeof id === "number") alreadyImportedModules[id] = true;
-			}
-			for (i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if (typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if (mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if (mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
 
 /***/ },
 /* 18 */

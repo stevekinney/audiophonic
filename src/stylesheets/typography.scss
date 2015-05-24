@@ -1,0 +1,15 @@
+* {
+  font-family: 'Fira Sans', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+p {
+  line-height: 1.4em;
+}
+
+a {
+  color: $ocean;
+  text-decoration: none;
+  &:hover {
+    color: darken($ocean, 10);
+  }
+}

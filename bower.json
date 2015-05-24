@@ -1,0 +1,24 @@
+{
+  "name": "audiophonic",
+  "version": "1.0.0",
+  "homepage": "https://github.com/stevekinney/audiophonic",
+  "authors": [
+    "Steve Kinney <hello@stevekinney.net>"
+  ],
+  "description": "Make some music in the browser",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "fira": "~0.1.0"
+  }
+}

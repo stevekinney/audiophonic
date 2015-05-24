@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Audiophonic</title>
+  <link rel="stylesheet" href="src/components/fira/fira.css" >
 </head>
 
 <body>
@@ -12,9 +13,13 @@
 
     <h1>Audiophonic</h1>
 
+    <p class="instructions">
+      <strong>Instructions</strong>: Hover over any key on the piano keyboard below to trigger a note. Even better, press any of the keys highlighted on the computer keyboard to trigger a note. Most importantly: have fun.
+    </p>
+
     <div class="piano keyboard">
       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-      <svg width="100%" viewBox="0 0 1120 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <svg width="800px" height="300px" viewBox="0 0 1120 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>Piano Keyboard</title>
         <defs></defs>
           <g id="piano-keyboard">
@@ -52,7 +57,7 @@
 
     <div class="computer keyboard">
       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-      <svg width="599px" height="206px" viewBox="0 0 599 206" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <svg width="800px" height="300px" viewBox="0 0 599 206" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>Keyboard</title>
         <g id="keyboard" transform="translate(-1.000000, -1.000000)" stroke="#636462" stroke-width="0.25" stroke-linejoin="round">
           <path id="key-backtick" class="computer-key key-code-192" d="M38.037931,32.03118 C38.037931,34.35579 36.1593103,36.22914 33.837931,36.22914 L5.6462069,36.22914 C3.32896552,36.22914 1.45034483,34.35579 1.45034483,32.03118 L1.45034483,6.04854 C1.45034483,3.73221 3.32896552,1.85058 5.6462069,1.85058 L33.837931,1.85058 C36.1593103,1.85058 38.037931,3.73221 38.037931,6.04854 L38.037931,32.03118 L38.037931,32.03118 Z"></path>
@@ -118,6 +123,10 @@
         </g>
       </svg>
     </div>
+
+    <footer>
+      <p>If you enjoyed this, check out <a href="http://github.com/stevekinney/audiophonic">the source code on Github</a> or <a href="http://twitter.com/stevekinney">follow Steve on Twitter</a>.
+    </footer>
 
   </div>
 
