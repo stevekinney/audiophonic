@@ -5,13 +5,13 @@ import keys from './note-keys';
 export function startNote() {
   d3.select(this).classed('active', true);
 
-  const note = this.dataset.pianoKey;
+  const note = this.attributes['data-piano-key'].value;
   if (note) { Synthesizer.oscillator(note).start(); }
 }
 
 export function stopNote() {
   d3.select(this).classed('active', false);
 
-  const note = this.dataset.pianoKey;
+  const note = this.attributes['data-piano-key'].value;
   if (note) { Synthesizer.oscillator(note).stop(); }
 }

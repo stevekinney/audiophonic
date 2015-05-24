@@ -6,7 +6,7 @@ const activeKeys = {};
 
 export default function (selector) {
   d3.selectAll(selector)[0].forEach(function (element) {
-    activeKeys[element.dataset.keyCode] = element;
+    activeKeys[element.attributes['data-key-code'].value] = element;
   });
 
   document.addEventListener('keydown', function (event) {
