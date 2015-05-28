@@ -13,13 +13,13 @@ export default function (selector) {
     d3.select(activeKeys[event.keyCode]).classed('active', true);
 
     const note = notes[event.keyCode];
-    if (note) { Synthesizer.oscillator(note).start(); }
+    if (note) { Synthesizer.oscillatorFor(note).start(); }
   });
 
   document.addEventListener('keyup', function (event) {
     d3.select(activeKeys[event.keyCode]).classed('active', false);
 
     const note = notes[event.keyCode];
-    if (note) { Synthesizer.oscillator(note).stop(); }
+    if (note) { Synthesizer.oscillatorFor(note).stop(); }
   });
 }

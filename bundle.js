@@ -98,7 +98,7 @@
 
 	  var note = this.attributes['data-piano-key'].value;
 	  if (note) {
-	    _Synthesizer2['default'].oscillator(note).start();
+	    _Synthesizer2['default'].oscillatorFor(note).start();
 	  }
 	}
 
@@ -107,7 +107,7 @@
 
 	  var note = this.attributes['data-piano-key'].value;
 	  if (note) {
-	    _Synthesizer2['default'].oscillator(note).stop();
+	    _Synthesizer2['default'].oscillatorFor(note).stop();
 	  }
 	}
 
@@ -147,7 +147,7 @@
 
 	    var note = _notes2['default'][event.keyCode];
 	    if (note) {
-	      _Synthesizer2['default'].oscillator(note).start();
+	      _Synthesizer2['default'].oscillatorFor(note).start();
 	    }
 	  });
 
@@ -156,7 +156,7 @@
 
 	    var note = _notes2['default'][event.keyCode];
 	    if (note) {
-	      _Synthesizer2['default'].oscillator(note).stop();
+	      _Synthesizer2['default'].oscillatorFor(note).stop();
 	    }
 	  });
 	};
@@ -199,7 +199,7 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(12)();
+	exports = module.exports = __webpack_require__(17)();
 	exports.push([module.id, "@charset \"UTF-8\";\na.button {\n  text-decoration: none; }\n\nbutton {\n  font-family: 'Open Sans'; }\n\nbutton, input[type=\"submit\"], .button {\n  color: white;\n  background-color: #1db2d4;\n  font-size: 0.8rem;\n  font-weight: 300;\n  border: 1px solid #1db2d4;\n  border-radius: 3px;\n  outline: none;\n  padding: 0.8rem 1.4rem;\n  font-weight: 300; }\n  @media screen and (max-width: 480px) {\n    button, input[type=\"submit\"], .button {\n      width: 100%;\n      display: block; } }\n\nbutton:hover, input[type=\"submit\"]:hover, .button:hover {\n  background-color: #24beeb; }\n\nbutton:active, input[type=\"submit\"]:active, .button:active {\n  background-color: #1c97bb; }\n\nbutton.forward:after, input[type=\"submit\"].forward:after, .button.forward:after {\n  content: ' →'; }\n\nbutton.deactivated, input[type=\"submit\"].deactivated, .button.deactivated {\n  background-color: #bde1eb;\n  pointer-events: none; }\n\nbutton.secondary, input[type=\"submit\"].secondary, .button.secondary {\n  background-color: white;\n  box-sizing: border-box;\n  color: #1db2d4; }\n\nbutton.secondary:hover, input[type=\"submit\"].secondary:hover, .button.secondary:hover {\n  background-color: #F9F9F9;\n  color: #24beeb; }\n\nbutton.secondary:active, input[type=\"submit\"].secondary:active, .button.secondary:active {\n  background-color: #EEE; }\n\nbutton.xl, input[type=\"submit\"].xl, .button.xl {\n  font-size: 1.5em; }\n\n.button-bar {\n  border-top: 1px dashed #b6ddd3;\n  padding: 2rem 0;\n  margin-top: 1rem; }\n\n.buttons {\n  margin-top: 2rem; }\n\n.computer {\n  fill: white; }\n\n.computer-key.active {\n  fill: red; }\n\n.white-key {\n  fill: #fff5d5;\n  stroke: #ffd755; }\n  .white-key:hover, .white-key.active {\n    fill: #ffefbc; }\n\n.black-key {\n  fill: #56b9c5;\n  stroke: #286c74; }\n  .black-key:hover, .black-key.active {\n    fill: #43b1be; }\n\n* {\n  font-family: 'Fira Sans', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }\n\np {\n  line-height: 1.4em; }\n\na {\n  color: #56b9c5;\n  text-decoration: none; }\n  a:hover {\n    color: #3ba0ad; }\n\n.container {\n  width: 800px;\n  margin: auto; }\n\nsvg {\n  width: 100%;\n  margin: auto; }\n", ""]);
 
 /***/ },
@@ -210,10 +210,6 @@
 
 	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
 	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
@@ -222,62 +218,27 @@
 
 	var _context2 = _interopRequireDefault(_context);
 
+	var _Oscillator = __webpack_require__(19);
+
+	var _Oscillator2 = _interopRequireDefault(_Oscillator);
+
 	var _Octavian = __webpack_require__(10);
 
 	var _Octavian2 = _interopRequireDefault(_Octavian);
 
-	var Synthesizer = (function () {
-	  function Synthesizer(frequency) {
+	var notes = {};
+
+	exports['default'] = {
+	  oscillatorFor: function oscillatorFor(note) {
 	    var destination = arguments[1] === undefined ? _context2['default'].destination : arguments[1];
 
-	    _classCallCheck(this, Synthesizer);
-
-	    var oscillator = this.oscillator = _context2['default'].createOscillator();
-	    var gain = _context2['default'].createGain();
-	    var volume = this.volume = gain.gain;
-
-	    oscillator.frequency.value = frequency;
-	    volume.value = 0;
-
-	    oscillator.connect(gain);
-	    gain.connect(destination);
-
-	    oscillator.start(0);
+	    var frequency = new _Octavian2['default'].Note(note).frequency;
+	    if (!this.notes[frequency]) {
+	      this.notes[frequency] = new _Oscillator2['default'](frequency, destination);
+	    }
+	    return this.notes[frequency];
 	  }
-
-	  _createClass(Synthesizer, [{
-	    key: 'start',
-	    value: function start() {
-	      this.volume.value = 1;
-	    }
-	  }, {
-	    key: 'stop',
-	    value: function stop() {
-	      this.volume.value = 0;
-	    }
-	  }], [{
-	    key: 'notes',
-	    get: function () {
-	      this.oscillators = this.oscillators || {};
-	      return this.oscillators;
-	    }
-	  }, {
-	    key: 'oscillator',
-	    value: function oscillator(note) {
-	      var destination = arguments[1] === undefined ? _context2['default'].destination : arguments[1];
-
-	      var frequency = new _Octavian2['default'].Note(note).frequency;
-	      if (!this.notes[frequency]) {
-	        this.notes[frequency] = new Synthesizer(frequency, destination);
-	      }
-	      return this.notes[frequency];
-	    }
-	  }]);
-
-	  return Synthesizer;
-	})();
-
-	exports['default'] = Synthesizer;
+	};
 	module.exports = exports['default'];
 
 /***/ },
@@ -611,21 +572,21 @@
 	  };
 	})();
 
-	var _parseNote = __webpack_require__(13);
+	var _parseNote = __webpack_require__(12);
 
 	var _parseNote2 = _interopRequireDefault(_parseNote);
 
-	var _getAlternateName = __webpack_require__(14);
+	var _getAlternateName = __webpack_require__(13);
 
 	var _getAlternateName2 = _interopRequireDefault(_getAlternateName);
 
-	var _getNoteFromPianoKey = __webpack_require__(15);
+	var _getNoteFromPianoKey = __webpack_require__(14);
 
 	var _getNoteFromPianoKey2 = _interopRequireDefault(_getNoteFromPianoKey);
 
-	var _pianoKeys$frequencies = __webpack_require__(16);
+	var _pianoKeys$frequencies = __webpack_require__(15);
 
-	var _validateNote = __webpack_require__(17);
+	var _validateNote = __webpack_require__(16);
 
 	var _validateNote2 = _interopRequireDefault(_validateNote);
 
@@ -769,61 +730,6 @@
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	"use strict";
-
-	module.exports = function () {
-		var list = [];
-
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for (var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if (item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-
-		// import a list of modules into the list
-		list.i = function (modules, mediaQuery) {
-			if (typeof modules === "string") modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for (var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if (typeof id === "number") alreadyImportedModules[id] = true;
-			}
-			for (i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if (typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if (mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if (mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -864,7 +770,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 14 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -925,7 +831,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 15 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -934,7 +840,7 @@
 	  value: true
 	});
 
-	var _pianoKeys = __webpack_require__(16);
+	var _pianoKeys = __webpack_require__(15);
 
 	var noteIndex = swapKeysAndValues(_pianoKeys.pianoKeys);
 
@@ -952,7 +858,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 16 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1182,7 +1088,7 @@
 	exports.frequencies = frequencies;
 
 /***/ },
-/* 17 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1192,7 +1098,7 @@
 	});
 	exports['default'] = validateNote;
 
-	var _pianoKeys = __webpack_require__(16);
+	var _pianoKeys = __webpack_require__(15);
 
 	var validNotes = Object.keys(_pianoKeys.pianoKeys);
 
@@ -1203,6 +1109,61 @@
 	}
 
 	module.exports = exports['default'];
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	"use strict";
+
+	module.exports = function () {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for (var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if (item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function (modules, mediaQuery) {
+			if (typeof modules === "string") modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for (var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if (typeof id === "number") alreadyImportedModules[id] = true;
+			}
+			for (i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if (typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if (mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if (mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
 
 /***/ },
 /* 18 */
@@ -1249,6 +1210,63 @@
 	    throw new Error('Invalid modifier');
 	  }
 	}
+	module.exports = exports['default'];
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
+
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _context = __webpack_require__(9);
+
+	var _context2 = _interopRequireDefault(_context);
+
+	var Oscillator = (function () {
+	  function Oscillator(frequency) {
+	    var destination = arguments[1] === undefined ? _context2['default'].destination : arguments[1];
+
+	    _classCallCheck(this, Oscillator);
+
+	    var oscillator = this.oscillator = _context2['default'].createOscillator();
+	    var gain = _context2['default'].createGain();
+	    var volume = this.volume = gain.gain;
+
+	    oscillator.frequency.value = frequency;
+	    volume.value = 0;
+
+	    oscillator.connect(gain);
+	    gain.connect(destination);
+
+	    oscillator.start(0);
+	  }
+
+	  _createClass(Oscillator, [{
+	    key: 'start',
+	    value: function start() {
+	      this.volume.value = 1;
+	    }
+	  }, {
+	    key: 'stop',
+	    value: function stop() {
+	      this.volume.value = 0;
+	    }
+	  }]);
+
+	  return Oscillator;
+	})();
+
+	exports['default'] = Oscillator;
 	module.exports = exports['default'];
 
 /***/ }

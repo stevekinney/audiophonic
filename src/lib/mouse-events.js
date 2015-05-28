@@ -6,12 +6,12 @@ export function startNote() {
   d3.select(this).classed('active', true);
 
   const note = this.attributes['data-piano-key'].value;
-  if (note) { Synthesizer.oscillator(note).start(); }
+  if (note) { Synthesizer.oscillatorFor(note).start(); }
 }
 
 export function stopNote() {
   d3.select(this).classed('active', false);
 
   const note = this.attributes['data-piano-key'].value;
-  if (note) { Synthesizer.oscillator(note).stop(); }
+  if (note) { Synthesizer.oscillatorFor(note).stop(); }
 }
