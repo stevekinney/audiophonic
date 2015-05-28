@@ -233,10 +233,10 @@
 	    var destination = arguments[1] === undefined ? _context2['default'].destination : arguments[1];
 
 	    var frequency = new _Octavian2['default'].Note(note).frequency;
-	    if (!this.notes[frequency]) {
-	      this.notes[frequency] = new _Oscillator2['default'](frequency, destination);
+	    if (!notes[frequency]) {
+	      notes[frequency] = new _Oscillator2['default'](frequency, destination);
 	    }
-	    return this.notes[frequency];
+	    return notes[frequency];
 	  }
 	};
 	module.exports = exports['default'];
